@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet"  href="{% static 'main.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <title>Infox core</title>
+<style>
+#firstbox{
+  background-color: white;
+  height: auto;
+  float: right;
+  width: 70%;
+  margin-right: 5%;
+  border-radius: 20px;
+}
+#firstbox div{
+  float: left;
+}
+table {
+  border: 2px;
+  color: #000000;
+  opacity: 1;
+  padding: 10px;
+}
+th{
+  font-weight: 300;
+  color: #313135;
+}
+h5{
+  font-weight:400;
+  color:#565AA8;
+  margin-left: 0.8%;
+}
+.h-divider{
+ margin-top:6px;
+ margin-bottom:5px;
+ height:1px;
+ width:100%;
+ border-top:1px solid gray;
+}
+.newt{
+  border-radius: 20px;
+  margin-left:85%;
+  margin-top: 1%;
+}
+th,td{
+  text-align: left;
+  margin-top: 1%;
+}
+thead{
+  background-color: #CEFFF8;
+}
+  </style>
+      </head>
+<body>
+<div  id="nav" class="container-fluid">
+        <a class="one" id="infox"><b>iNFOX</b></a>
+        <a class="two" id="core"><b>Core</b></a>
+        <a class="three" id=""></a>
+          {% for t in mem %}
+    {% if forloop.first %}{% endif %}
+        <span class="four">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ t.employeeimage.url }}" class="rounded-circle"  width="50" height="50" id="img2"></span>
+{% endfor %}
+</div>
+<div class="sidenav">
+  <a href="accounts"class="col" id="sidebox1">MY PROFILE</a>
+  <a href="acntemp" class="col" id="sidebox1">EMPLOYEES </a>
+  <a href="acntpayslips" class="col" id="sidebox1">PAYSLIPS </a>
+  <a href="acntreceipts" class="col" id="sidebox1">RECEIPTS</a>
+  <a href="acntexpenses" class="col" id="sidebox1">EXPENSES</a>
+</div>
+<div><label id="myprofile">EXPENSES</label>
+<div id="firstbox" class="shadow p-3 bg-white"> 
+  <h5>Expenses</h5>
+  <div class="h-divider">
+  </div>
+  <a href="acntnewt"><button class="btn btn-primary newt" type="button">New transaction</button></a><br><br>
+
+    <table class="table table-bordered">
+    <thead class="thead">
+      <tr>
+        <th>Date</th>
+        <th>Payee</th>
+        <th>Category</th>
+        <th>Total before tax</th>
+        <th>Tax</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    <tbody>
+   {% for ac in names %}
+   {% if forloop.first %} {% endif %}
+      <tr>
+        <td>{{ ac.paydate}}</td>
+        <td>{{ ac.payee }}</td>
+        <td>{{ ac.category }}</td>
+        <td>{{ ac.amount }}</td>
+        <td>{{ ac.tax }}</td>
+        <td id="c">{{ ac.total }}</td>
+        <td><a href="acntexpviewedit?empid={{ ac.id }}">View/edit</a></td>
+      </tr>
+    </tbody>
+      {% endfor %}
+    <tr>
+        <td colspan="5"><b>Total</b></td>
+        <td id="totalsalary" colspan="2"></td>
+    </tr>
+  </table>
+<script>
+    $(document).ready(function () {
+        var empsalary;
+        var totalsalary = 0;
+        $('td:nth-child(6)').each(function () {
+            empsalary = $(this).html();
+            totalsalary += parseInt(empsalary);
+            $('#totalsalary').text(totalsalary);
+        });
+    });
+</script>
+</div>
+</div>
+</body>
+</html>
+              

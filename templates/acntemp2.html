@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet"  href="{% static 'main.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <title>Infox core</title>
+<style>
+#firstbox{
+  background-color: white;
+  height: auto;
+  float: right;
+  width: 75%;
+  margin-right: 1%;
+  border-radius: 15px;
+  border:2px solid #707070;
+}
+#firstbox div{
+  float: left;
+}
+#firstbox label{
+  margin-left: 10px;
+  padding-top: 14px;
+  color: #050505;
+  font-weight: 400;
+  font-size: 18px;
+  width: 200px;
+  margin-top: 2px;
+}
+.Search{
+  margin-top: 2%;
+  float: right;
+  margin-right: 5%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+h5{
+  font-weight: 400;
+  margin-top: 5px;
+  text-align: center;
+  margin-bottom: 21px;
+}
+#hiddendiv{
+  height: auto;
+  width: 75%;
+  float: right;
+
+}
+th, td{
+  text-align: center;
+}
+  </style>
+      </head>
+<body>
+<div  id="nav" class="container-fluid">
+        <a class="one" id="infox"><b>iNFOX</b></a>
+        <a class="two" id="core"><b>Core</b></a>
+        <a class="three" id=""></a>
+          {% for t in mem %}
+    {% if forloop.first %}{% endif %}
+        <span class="four">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ t.employeeimage.url }}" class="rounded-circle"  width="50" height="50" id="img2"></span>
+{% endfor %}
+</div>
+<div class="sidenav">
+  <a href="accounts"class="col" id="sidebox1">MY PROFILE</a>
+  <a href="acntemp" class="col" id="sidebox1">EMPLOYEES </a>
+  <a href="acntpayslips" class="col" id="sidebox1">PAYSLIPS </a>
+  <a href="acntreceipts" class="col" id="sidebox1">RECEIPTS</a>
+  <a href="acntexpenses" class="col" id="sidebox1">EXPENSES</a>
+</div>
+<div><label id="myprofile">PAYSIPS</label>
+<div id="firstbox" class="shadow p-3 bg-white">
+<form action="acntdefine" method="post">
+{% csrf_token %}
+{% for regdetails in emp %}
+<label style="width:150px;">Name</label><label style="width:900px;" name="ename">{{ regdetails.name }}</label>
+
+  <label style="width:150px;">Effective From</label>
+  <input type="date" style="width: 150px" name="dateef" required>
+  <input type="hidden" name="enam" value="{{ regdetails.name }}">
+  <input type="hidden" name="employeeid" value="{{ regdetails.employeeid }}">
+  <input type="hidden" name="email" value="{{ regdetails.email }}">
+  <input type="hidden" name="bankname" value="{{ regdetails.bankname }}">
+  <input type="hidden" name="acntno" value="{{ regdetails.acntno }}">
+  <input type="hidden" name="branch" value="{{ regdetails.branch }}">
+  <input type="hidden" name="department" value="{{ regdetails.department }}">
+  <input type="hidden" name="designation" value="{{ regdetails.designation }}">
+  <input type="hidden" name="pr" value="{{ regdetails.pr }}">
+  <input type="hidden" name="pf" value="{{ regdetails.pf }}">
+  <input type="hidden" name="taxengime" value="{{ regdetails.taxregime }}">
+  <input type="hidden" name="uan" value="{{ regdetails.uan }}">
+  <input type="hidden" name="esi" value="{{ regdetails.esi }}">
+  <input type="hidden" name="pan" value="{{ regdetails.pan }}">
+  <input type="hidden" name="datejoin" value="{{ regdetails.dateofappoinment}}">
+ {% endfor %}
+<h5>SALARY DETAILS</h5>
+  <table class="table table-bordered">
+      <tr>
+        <th>Pay head</th>
+        <th>Pay</th>
+        <th>Pay head type </th>
+      </tr>
+    <tbody>
+      <tr>
+        <td>Basic salary</td>
+        <td><input type="text" name="basicpay"></td>
+        <td>
+          <select  required style="color: #444F4D; width:75%" name="basictype">
+          <option value="Earning for Employees">Earning for Employees</option>
+          <option value="Deduction for Employees">Deduction for Employees</option>
+          </select>
+
+        </td>
+      </tr>
+      <tr>
+        <td>Hra</td>
+        <td><input type="text" name="hrapay"></td>
+        <td>
+          <select  required style="color: #444F4D; width:75%" name="hratype">
+          <option value="Earning for Employees">Earning for Employees</option>
+          <option value="Deduction for Employees">Deduction for Employees</option>
+          </select>
+
+        </td>
+      </tr>
+      <tr>
+        <td>Conveyence allowance</td>
+        <td><input type="text" name="conpay"></td>
+        <td>
+          <select  required style="color: #444F4D; width:75%" name="contype">
+          <option value="Earning for Employees">Earning for Employees</option>
+          <option value="Deduction for Employees">Deduction for Employees</option>
+          </select>
+
+        </td>
+      </tr>
+      <tr>
+        <td>Profesional tax</td>
+        <td><input type="text" name="propay"></td>
+        <td>
+          <select  required style="color: #444F4D; width:75%" name="protype">
+          <option value="Earning for Employees">Earning for Employees</option>
+          <option value="Deduction for Employees">Deduction for Employees</option>
+          </select>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+     <button type="submit" class="btn btn-primary Search">Save</button></a>
+</form>
+</div>
+</div>
+</body>
+</html>  

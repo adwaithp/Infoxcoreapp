@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet"  href="{% static 'main.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <title>Infox core</title>
+<style>
+#firstbox{
+  background-color: white;
+  height: auto;
+  float: right;
+  width: 70%;
+  margin-right: 5%;
+  border-radius: 20px;
+}
+#firstbox div{
+  float: left;
+}
+table table-bordered{
+  border: 2px;
+  color: #000000;
+  opacity: 1;
+  padding: 10px;
+  margin-bottom: 10%;
+}
+
+h5{
+  font-weight: 400;
+  color:#565AA8;
+  margin-left: 0.8%;
+}
+.h-divider{
+ margin-top:6px;
+ margin-bottom:5px;
+ height:1px;
+ width:100%;
+ border-top:1px solid gray;
+}
+th,td{
+  text-align: left;
+  margin-top: 1%;
+
+}
+thead{
+  background-color: #CEFFF8;
+
+}
+#date{
+  width: 20%;
+  border-width: 1px;
+  margin-left:-1.5%;
+}
+.Search{
+  margin-top: 0.5%;
+  float: right;
+  margin-right: 0.3%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+th, td{
+  text-align: center;
+}
+  </style>
+      </head>
+<body>
+<div  id="nav" class="container-fluid">
+        <a class="one" id="infox"><b>iNFOX</b></a>
+        <a class="two" id="core"><b>Core</b></a>
+        <a class="three" id=""></a>
+          {% for t in mem %}
+    {% if forloop.first %}{% endif %}
+        <span class="four">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ t.employeeimage.url }}" class="rounded-circle"  width="50" height="50" id="img2"></span>
+{% endfor %}
+</div>
+<div class="sidenav">
+  <a href="accounts" class="col" id="sidebox1">MY PROFILE</a>
+  <a href="acntemp" class="col" id="sidebox1">EMPLOYEES </a>
+  <a href="acntpayslips" class="col" id="sidebox1">PAYSLIPS </a>
+  <a href="acntreceipts" class="col" id="sidebox1">RECEIPTS</a>
+  <a href="acntexpenses" class="col" id="sidebox1">EXPENSES</a>
+</div>
+<div><label id="myprofile">EXPENSES</label>
+<div id="firstbox" class="shadow p-3 bg-white"> 
+<h5>Expenses</h5>
+        <form action="acntnewtsave" method="post">
+        {% csrf_token %}
+<div class="h-divider"></div>
+<label style="margin-left:2%;width: 120px;"> Payee </label><input type="text" name="payee" style="width: 20%">
+<label style="margin-left:6% ;margin-top:2% ;width:200px;">Payment Account</label>
+<input type="text" style="width: 20%" name="payacnt"><br><br>
+<label style="margin-left:2% ;margin-top:2%; width:130px;">Payment date</label>
+<input type="date" name="paydate" id="date" style="color: #444F4D">
+<label style="margin-left:6% ;margin-top:2% ;width:200px;">Payment Method</label>
+ <input type="text" style="width: 20%" name="paymethod"><br>
+<label style="margin-left:2% ;margin-top:7%; width:110px;">Ref no</label>
+<input type="text" name="refno" style="width:20%" ><br><br>
+<div class="h-divider"></div>
+<h5>Category details</h5><br>
+  <table class="table table-bordered">
+      <tr>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Tax</th>
+      </tr>
+    <tbody>
+      <tr>
+        <td><input type="text" name="category"></td>
+        <td><input type="text" name="description"></td>
+        <td><input type="text" name="amount" id="A"></td>
+        <td><input type="text" name="tax" style="width: 40px;" id="B"></td>
+      </tr>
+    </tbody>
+  </table>
+        <input type="hidden" id="C" name="total">
+        <button type="submit" class="btn btn-primary Search">Save</button>
+    </form>
+    <script>
+      $('#A, #B').on('input',function(e){
+    $('#C').val(parseInt($('#A').val()) + parseInt($('#B').val()));
+    });
+    </script>
+</div>
+</div>
+</body>
+</html>

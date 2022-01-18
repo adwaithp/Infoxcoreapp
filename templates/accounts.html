@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet"  href="{% static 'main.css' %}">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <title>Infox core</title>
+<style>
+#firstbox{
+  background-color: white;
+  height: 175px;
+  float: right;
+  width: 79%;
+}
+#firstbox div{
+  padding-left: 5%;
+  float: left;
+}
+#adname{
+  padding-top: 14px;
+  color: #58B7AA;
+  font-weight: 600;
+  max-width: 300px;
+}
+#bigimage{
+  float: right;
+  margin-right: 10%;
+}
+#ringchart1{
+  float: left;
+  margin-left: 26%;
+}
+#ringchart2{
+  float: left;
+  margin-left: 2.1%;
+
+  }
+#barchart{
+  background: #A6CEE3 0% 0% no-repeat padding-box;
+  opacity: 1;  color: #FFFFFF;
+  margin-top: 3%;
+  float: right;
+  margin-right: 5%;
+  width: 105px;
+  height: 35px;
+
+
+}
+#piechart{
+  background: #1F78B4 0% 0% no-repeat padding-box;
+  opacity: 1;
+  border-color: #1F78B4;
+  color: #FFFFFF;
+  margin-top: 7%;
+  float: right;
+  margin-right: -5.5%;
+  width: 105px;
+  height: 35px;
+
+}
+.bar{
+  margin-right: 15%;
+
+}
+#firstbox1{
+  background-color: white;
+  height: auto;
+  float: right;
+  width: 58%;
+  margin-top: -1%;
+  margin-right:17.5%;
+}
+.bbb{
+  float: right;
+  margin-right:-70%;
+  margin-top: 5%;
+}
+#performance{
+  opacity: 0.36;
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 21%;
+  padding: 0% 2% 1.5% 3%;
+}
+  </style>
+      </head>
+<body>
+<div  id="nav" class="container-fluid">
+        <a class="one" id="infox"><b>iNFOX</b></a>
+        <a class="two" id="core"><b>Core</b></a>
+        <a class="three" id=""></a>
+          {% for t in mem %}
+    {% if forloop.first %}{% endif %}
+
+        <span class="four">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ t.employeeimage.url }}" class="rounded-circle"  width="50" height="50" id="img2"></span>
+{% endfor %}
+</div>
+<div class="sidenav">
+  <a href="accounts"class="col" id="sidebox1">MY PROFILE</a>
+  <a href="acntemp" class="col" id="sidebox1">EMPLOYEES </a>
+  <a href="acntpayslips" class="col" id="sidebox1">PAYSLIPS </a>
+  <a href="acntreceipts" class="col" id="sidebox1">RECEIPTS</a>
+  <a href="acntexpenses" class="col" id="sidebox1">EXPENSES</a>
+</div>
+<div><label id="myprofile">MY PROFILE</label>
+<div id="firstbox" class="shadow p-3 mb-5 bg-white rounded">
+  <div class="row-sm">
+          {% for t in mem %}
+    {% if forloop.first %}{% endif %}
+    <h3 id="adname">{{ t.name }}</h3>
+    <h4 style="font-weight: 400">{{ t.designation }}</h4>
+    <h5 style="font-weight: 400">
+    <span style="color: #58B7AA">Departments</span>&nbsp&nbsp&nbsp{{ t.department }}<span style="color: #58B7AA">&nbsp&nbsp&nbspJoining date</span>&nbsp&nbsp&nbsp{{ t.dateofappoinment}}</h5></div>
+  <img src="{{ t.employeeimage.url }}" class="rounded-circle" width="150" height="150" id="bigimage"></div></div>
+  <div id="row">
+  <div><label style="color: #74767a;font-size: 20px;float: right;margin-right: 64.5%;margin-top: -2%;" id="performance">PERFORMANCE</label></div>
+  <div>
+  </div>
+
+<div class="bbb">
+  <div class=""  style="margin-top: 5%;">    
+    <a href="acnmypropie_chart?empid={{ t.id }}"><button type="button" class="btn btn-primary active">PieChart</button>
+  </a></div>
+  <div class=""  style="margin-top: 10%;">
+    <a href="accounts1?empid={{ t.id }}"><button type="button" class="btn btn-primary disabled">BarChart</button></a></div>
+</div>
+</div>
+{% endfor %}
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet"  href="{% static 'main.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <title>Infox core</title>
+<style>
+
+#firstbox{
+  background-color: white;
+  height: auto;
+  float: right;
+  width: 68%;
+  margin-right: 8%;
+  border-radius: 15px;
+  margin-top: 2%;
+}
+#firstbox div{
+  float: left;
+}
+#firstbox label{
+  margin-left: 75px;
+  padding-top: 14px;
+  color: #574F4F;
+  font-weight: 400;
+  font-size: 20px;
+  margin-top: 1%;
+  width: 200px;
+}
+.Search{
+  margin-top: 3%;
+  float: right;
+  margin-right:-13%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+#box2{
+  padding: 0.8% 5% 0.8% 4%;
+  background-color: white;
+  border-radius: 10px;
+  float: left;
+  margin-top: 0.5%;
+  width: 90%;
+  margin-right: 10%;
+  border: 1px solid #707070;
+}
+#box2 h5,#box2 img{
+  float: left;
+  margin-right: 22px;
+  color: #393D3D;
+}
+h4{
+  font-weight: 400;
+  margin-top: 0%;
+  color:  #6C63FF;
+  margin-left: 3%;
+}
+h5{
+  font-weight: 400;
+}
+#hiddendiv{
+  height: auto;
+  width: 75%;
+  float: right;
+
+}
+#box2 img{
+  margin-top: 4px;
+}
+.birthday{
+  font-weight: 300;
+  margin-top: -1%;
+  margin-left:10px;
+  font-size: 10px;
+ 
+
+}
+.Send{
+  margin-top: 1%;
+  float: right;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 0.4%;
+  padding-bottom: 0.4%;
+}
+#box3{
+  padding: 0.8% 2% 0.8% 4%;
+  background-color: white;
+  border-radius: 10px;
+  float: left;
+  margin-top: 0%;
+  margin-left: 24%;
+  width: 33%;
+  margin-right: 20%;
+  height: 60px;
+}
+#box3 h5,#box3 img{
+  float: left;
+  margin-right: 51px;
+  color:#6C63FF;
+
+}
+
+.drop{
+    height: 40px;
+    width: 480px;
+    margin-left:0%;
+    border-radius: 5px;
+    margin-top: 0px;
+}
+
+.Search{
+  margin-top: 2%;
+  float: right;
+  margin-right:7%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+  </style>
+      </head>
+<body>
+<div  id="nav" class="container-fluid">
+        <a class="one" id="infox"><b>iNFOX</b></a>
+        <a class="two" id="core"><b>Core</b></a>
+        <a class="three" id=""></a>
+          {% for t in mem %}
+    {% if forloop.first %}{% endif %}
+        <span class="four">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ t.employeeimage.url }}" class="rounded-circle"  width="50" height="50" id="img2"></span>
+{% endfor %}
+</div>
+<div class="sidenav">
+  <a href="accounts" class="col" id="sidebox1">MY PROFILE</a>
+  <a href="acntemp" class="col" id="sidebox1">EMPLOYEES </a>
+  <a href="acntpayslips" class="col" id="sidebox1">PAYSLIPS </a>
+  <a href="acntreceipts" class="col" id="sidebox1">RECEIPTS</a>
+  <a href="acntexpenses" class="col" id="sidebox1">EXPENSES</a>
+</div>
+<div><label id="myprofile">PAYSLIPS</label></div>
+<div id="firstbox" class="shadow p-3 bg-white">    <div>
+      <label>Select Department </label>&nbsp
+       <select id="regdetailsdept" name="regdetails" class="drop" required>
+       <option></option>
+        <option>Python</option>
+        <option>ML</option>
+        <option>Android</option>
+        <option>PHP</option>
+      </select>
+    </div>
+    <button id="btnSearch" type="button" class="btn btn-primary Search" >Search</button>
+  </div>
+</div>
+<div id="hiddendiv">
+</div>
+<script type="text/javascript">
+    $("#btnSearch").click(function () {
+        <!-- const url = $("#personForm").attr("data-cities-url"); -->
+        const deptId = $("#regdetailsdept").val();
+        $.ajax({
+            url: 'acntviewattend',
+            data: {
+                'dept_id': deptId,
+            },
+            success: function (data) {
+                $("#hiddendiv").html(data);
+            }
+        });
+    });
+  function showDiv() {
+      document.getElementById('hiddendiv').style.display = "block";
+  }
+</script>
+</body>
+</html>

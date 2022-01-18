@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet"  href="{% static 'main.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <title>Infox core</title>
+<style>
+#firstbox{
+  background-color: white;
+  height: auto;
+  float: right;
+  width: 75%;
+  margin-right: 1%;
+  border-radius: 15px;
+  border:2px solid #707070;
+}
+#firstbox div{
+  float: left;
+}
+#firstbox label{
+  margin-left: 30px;
+  padding-top: 14px;
+  color: #050505;
+  font-weight: 400;
+  font-size: 18px;
+  width: 258px;
+}
+.Search{
+  margin-top: 4%;
+  float: right;
+  margin-right: 3%;
+  padding-left: 7%;
+  padding-right: 7%;
+}
+h5{
+  font-weight: 400;
+  margin-top: 10px;
+}
+#hiddendiv{
+  height: auto;
+  width: 75%;
+  float: right;
+}
+#box2 img{
+  margin-top: 4px;
+}
+.h-divider{
+ margin-top:8%;
+ margin-bottom:5px;
+ height:1px;
+ width:95%;
+ border-top:1px solid gray;
+ margin-left: 2%;
+}
+.vl {
+  border-left: 1px solid gray;
+  height: 670px;
+  margin-left: 0%;
+  margin-top: -0.5%
+}
+.h-divider1{
+ margin-top:4%;
+ margin-bottom:5px;
+ height:1px;
+ width:122%;
+ border-top:1px solid gray;
+ margin-left: 0%;
+ margin-bottom: 4%;
+}
+  </style>
+      </head>
+<body>
+<div  id="nav" class="container-fluid">
+        <a class="one" id="infox"><b>iNFOX</b></a>
+        <a class="two" id="core"><b>Core</b></a>
+        <a class="three" id=""></a>
+          {% for t in mem %}
+    {% if forloop.first %}{% endif %}
+        <span class="four">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ t.employeeimage.url }}" class="rounded-circle"  width="50" height="50" id="img2"></span>
+{% endfor %}
+</div>
+<div class="sidenav">
+  <a href="accounts"class="col" id="sidebox1">MY PROFILE</a>
+  <a href="acntemp" class="col" id="sidebox1">EMPLOYEES </a>
+  <a href="acntpayslips" class="col" id="sidebox1">PAYSLIPS </a>
+  <a href="acntreceipts" class="col" id="sidebox1">RECEIPTS</a>
+  <a href="acntexpenses" class="col" id="sidebox1">EXPENSES</a>
+</div>
+<div><label id="myprofile">EMPLOYEES</label>
+<div id="firstbox" class="shadow p-3 bg-white">
+
+    <form action="acntempupdate" method="post">
+        {% csrf_token %}
+  {% for st in emp %}
+
+  <div>
+    <label>EMPLOYEE NAME</label><label style="color: #050505;width: 500px;">{{st.name }}</label>
+  </div>
+  <div>
+    <label>DISPLAY NAME IN REPORT AS</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="dispname" value="{{ st.dispname }}" style="margin-left: 0% ;width:200px">
+  </div>
+  <div>
+    <label>DATE OF JOINING</label><label style="color: #050505;width: 500px;">{{st.dateofappoinment  }}</label>
+  </div>
+  <div>
+    <a href="acntemp2?empid={{ st.employeeid }}"><label style="color: blue;">DEFINE SALARY DETAILS</label></a>
+  <div class="h-divider">
+  </div>
+  <div>
+    <h5 style="margin-left: 5%;width: 500px">GENERAL INFORMATION</h5>
+    <label >EMPLOYEE NUMBER</label><label name="empno" style="color: #050505;width: 190px;">{{ st.employeeid }}</label> <br>
+      <input type="hidden"  name="team_id" value={{ st.id }}>
+
+    <label>DEPARTMENT</label><label style="color: #050505;width: 190px;">{{ st.department }}</label><br>
+    <label>DESIGNATION</label><label style="color: #050505;width: 190px;">{{ st.designation }}</label><br>
+    <label>LOCATION</label><label style="color: #050505;width: 190px;">{{ st.branch }}</label><br>
+    <label>GENDER</label>&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="gender" style="margin-left: 0% ;width:180px" value="{{ st.gender}}"><br>
+    <label>BLOOD GROUP</label>&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="blood" style="margin-left: 0% ;width:180px" value="{{ st.blood}}"><br>
+    <label>FATHERS NAME</label><label style="color: #050505;width: 190px;">{{ st.dadname}}</label><br>
+    <label>ADDRESS</label><label style="color: #050505;width: 190px;">{{ st.permanantadd1 }}</label><br>
+    <label>EMAIL</label><label style="color: #050505;width: 190px;">{{ st.email }}</label><br>
+    <label>BANK NAME</label><input type="text" name="bankname" style="margin-left: 0% ;width:200px" value="{{ st.bankname }}"><br>
+    <label>BANK ACCOUNT NUMBER</label><input type="text" name="acntno" style="margin-left: 0% ;width:200px" value="{{ st.acntno }}"><br>
+    <label>IFSC CODE</label><input type="text" name="ifsc" style="margin-left: 0% ;width:200px" value="{{ st.ifsc }}"><br>
+  </div>
+  <div class="vl"></div>
+  <div>
+    <h5 style="margin-left:15%;width: 500px">STATUTORY DETAILS</h5>
+    <label>APPLICABLE TAX REGIME</label><input type="text" name="taxregime" style="margin-left: 7% ;width:170px" value="{{ st.taxregime }}"><br>
+    <label>INCOME TAX NUMBER(PAN)</label>
+    <input type="text" name="pan" style="margin-left: 6% ;width:170px" value="{{ st.pan }}"><br>
+    <label>AADHAR NUMBER</label>
+    <input type="text" name="aadhar" style="margin-left: 6% ;width:170px" value="{{ st.aadhar }}"><br>
+    <label>UNIVERSAL ACCOUNT NUMBER</label>
+    <input type="text" name="uan" style="margin-left: 6% ;width:170px" value="{{ st.uan }}"><br>
+    <label>PF ACCOUNT NUMBER</label>
+    <input type="text" name="pf" style="margin-left: 6% ;width:170px" value="{{ st.pf }}"><br>
+    <label>EPS ACCOUNT NUMBER</label>
+    <input type="text" name="eps" style="margin-left: 6% ;width:170px" value="{{ st.eps }}"><br>
+    <label>DATE OF JOINING FOR PF</label>
+    <input type="text" name="datepf" style="margin-left: 6% ;width:170px" value="{{ st.datepf }}"><br>
+    <label>PR ACCOUNT NUMBER</label>
+    <input type="text" name="pr" style="margin-left: 6% ;width:170px"value="{{ st.pr }}"><br>
+    <label>ESI NUMBER</label>
+    <input type="text" name="esi" style="margin-left: 6% ;width:170px "value="{{ st.esi }}"><br>
+    <label>ESI DISPENSARY NAME</label>
+    <input type="text" name="esiname" style="margin-left: 6% ;width:170px"value="{{ st.esiname }}">
+    <div class="h-divider1"></div>
+    <h5 style="margin-left: 28%;">CONTRACT DETAILS</h5>
+    <label>CONTRACT START DATE</label>
+    <input type="text" name="contractstart" style="margin-left: 6% ;width:170px" value="{{ st.contractstart }}"><br>
+    <label>CONTRACT EXPIRY DATE</label>
+    <input type="text" name="contractexpry" style="margin-left: 6% ;width:170px"value="{{ st.contractexpry }}" ><br>
+     <button type="submit" class="btn btn-primary Search">Save</button>
+  {% endfor %}
+        </div>
+        </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</body>
+</html>
